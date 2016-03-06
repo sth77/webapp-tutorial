@@ -3,7 +3,7 @@ package com.toedter.tutorials.webapp.lab8.user;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-import com.toedter.tutorials.webapp.lab7.user.User;
+import com.toedter.tutorials.webapp.lab8.user.User;
 
 @RepositoryRestResource(
         collectionResourceRel = "users",

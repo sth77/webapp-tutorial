@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.toedter.tutorials.webapp.lab7.user.User;
-import com.toedter.tutorials.webapp.lab7.user.UserRepository;
-import com.toedter.tutorials.webapp.lab7.user.UserTestDataLoader;
+import com.toedter.tutorials.webapp.lab8.user.User;
+import com.toedter.tutorials.webapp.lab8.user.UserRepository;
+import com.toedter.tutorials.webapp.lab8.user.UserTestDataLoader;
 
 public class UserTestDataLoader {
     private final Logger logger = LoggerFactory.getLogger(UserTestDataLoader.class);

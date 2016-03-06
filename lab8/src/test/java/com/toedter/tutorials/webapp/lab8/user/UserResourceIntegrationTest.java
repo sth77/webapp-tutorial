@@ -1,6 +1,6 @@
 package com.toedter.tutorials.webapp.lab8.user;
 
-import com.toedter.tutorials.webapp.lab7.Application;
+import com.toedter.tutorials.webapp.lab8.Application;
 import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;

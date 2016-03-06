@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapter;
 
-import com.toedter.tutorials.webapp.lab7.user.User;
+import com.toedter.tutorials.webapp.lab8.user.User;
 
 @Configuration
 public class UserConfiguration extends RepositoryRestConfigurerAdapter {

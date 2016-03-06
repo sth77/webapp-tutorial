@@ -1,8 +1,8 @@
 package com.toedter.tutorials.webapp.lab8.user;
 
-import com.toedter.tutorials.webapp.lab7.Application;
-import com.toedter.tutorials.webapp.lab7.user.User;
-import com.toedter.tutorials.webapp.lab7.user.UserRepository;
+import com.toedter.tutorials.webapp.lab8.Application;
+import com.toedter.tutorials.webapp.lab8.user.User;
+import com.toedter.tutorials.webapp.lab8.user.UserRepository;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
