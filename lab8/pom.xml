@@ -111,6 +111,24 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+		        <filtering>true</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/html</directory>
+				<targetPath>META-INF/resources/</targetPath>
+			</resource>
+			<resource>
+				<directory>src/main/ts</directory>
+				<targetPath>META-INF/resources/ts/</targetPath>
+			</resource>
+			<resource>
+				<directory>bower_components</directory>
+				<targetPath>META-INF/resources/bower_components/</targetPath>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
@@ -138,7 +156,7 @@
 						<configuration>
 							<arguments>update -no-optional</arguments>
 						</configuration>
-					</execution>
+					</execution>					
 				</executions>
 			</plugin>
 			<plugin>

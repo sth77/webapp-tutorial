@@ -1,3 +1,7 @@
 /target/
 /node_modules/
 /node/
+/typings/
+/bower_components/
+/dist/
+/.grunt/
