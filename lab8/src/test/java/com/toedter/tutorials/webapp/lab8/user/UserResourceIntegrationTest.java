@@ -1,7 +1,13 @@
 package com.toedter.tutorials.webapp.lab8.user;
 
-import com.toedter.tutorials.webapp.lab8.Application;
-import org.hamcrest.CoreMatchers;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,8 +27,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.ShallowEtagHeaderFilter;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import com.toedter.tutorials.webapp.lab8.Application;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
@@ -34,7 +39,7 @@ public class UserResourceIntegrationTest {
     protected WebApplicationContext context;
 
     @Autowired
-    protected LinkDiscoverers links;
+    protected List<LinkDiscoverers> links;
     protected MockMvc mvc;
 
     @Before
@@ -46,15 +51,15 @@ public class UserResourceIntegrationTest {
 
     @Test
     public void shouldGetUsersLink() throws Exception {
-        MockHttpServletResponse response = mvc.perform(get("/")).
+        MockHttpServletResponse response = mvc.perform(get("/api/")).
                 andDo(MockMvcResultHandlers.print()).
                 andExpect(status().isOk()).
                 andExpect(content().contentType(MediaTypes.HAL_JSON)).
-                andExpect(jsonPath("_links.users.href", CoreMatchers.notNullValue())).
+                andExpect(jsonPath("_links.users.href", notNullValue())).
                 andReturn().
                 getResponse();
 
-        LinkDiscoverer discoverer = links.getLinkDiscovererFor(response.getContentType());
+        LinkDiscoverer discoverer = links.get(0).getLinkDiscovererFor(response.getContentType());
         Link link = discoverer.findLinkWithRel("users", response.getContentAsString());
         String href = link.getHref();
         String hrefWithoutTemplateParameters = href.substring(0, href.indexOf("{"));
@@ -62,6 +67,6 @@ public class UserResourceIntegrationTest {
         mvc.perform(get(hrefWithoutTemplateParameters)).
                 andDo(MockMvcResultHandlers.print()).
                 andExpect(content().contentTypeCompatibleWith(MediaTypes.HAL_JSON)).
-                andExpect(jsonPath("_embedded.users", CoreMatchers.notNullValue()));
+                andExpect(jsonPath("_embedded.users", notNullValue()));
     }
 }

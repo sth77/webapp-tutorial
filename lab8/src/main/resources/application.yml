@@ -1,0 +1,9 @@
+spring:
+    application:
+        name: Webapp-Tutorial
+    data:
+        rest:
+            basePath: /api
+    hateoas:
+        use-hal-as-default-json-media-type: true
+        
